@@ -81,7 +81,12 @@ h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3rem);font-weight:400;col
 #results{display:none}
 .result-header{background:var(--w);border:1px solid var(--line);border-radius:6px;padding:2.5rem 2rem;margin-bottom:1rem;position:relative;overflow:hidden}
 .result-header::after{content:'';position:absolute;right:-30px;top:50%;transform:translateY(-50%);width:200px;height:200px;border-radius:50%;border:1px solid rgba(212,85,0,.15);pointer-events:none}
-.result-eyebrow{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-bottom:.8rem}
+.result-eyebrow{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-bottom:.6rem}
+.result-client{margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--line)}
+.result-client-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;font-weight:300;color:var(--ink);line-height:1.1;margin-bottom:.35rem;letter-spacing:-.01em}
+.result-client-meta{font-size:.78rem;font-weight:300;color:var(--soft);letter-spacing:.04em;display:flex;gap:1rem;flex-wrap:wrap}
+.result-client-meta span{display:flex;align-items:center;gap:.35rem}
+.result-client-meta span::before{content:'';width:4px;height:4px;background:var(--orange);border-radius:50%;display:inline-block}
 .result-score-row{display:flex;align-items:baseline;gap:1rem;margin-bottom:.5rem}
 .result-num{font-family:var(--serif);font-size:5rem;font-weight:300;color:var(--orange);line-height:1;letter-spacing:-.03em}
 .result-level{font-family:var(--serif);font-size:1.8rem;font-weight:300;font-style:italic;color:var(--ink)}
@@ -109,7 +114,8 @@ h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3rem);font-weight:400;col
 .btn-cta-white:hover{opacity:.9}
 .result-gap{margin:1.2rem 0;padding:1.2rem 1.5rem;border-left:3px solid var(--orange);background:#FDF1EB}
 .result-gap-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:.4rem}
-.result-gap-text{font-size:.88rem;font-weight:300;color:var(--mid);line-height:1.75}
+.result-gap-text{font-size:.88rem;font-weight:300;color:var(--mid);line-height:1.75;margin-bottom:.6rem}
+.result-gap-action{font-size:.84rem;font-weight:400;color:var(--ink);line-height:1.75;padding-top:.6rem;border-top:1px solid rgba(212,85,0,.2)}
 .result-strength{margin:1.2rem 0 1.8rem;padding:1.2rem 1.5rem;border-left:3px solid #347010;background:#F0F7E8}
 .result-strength-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#347010;font-weight:600;margin-bottom:.4rem}
 .result-strength-text{font-size:.88rem;font-weight:300;color:var(--mid);line-height:1.75}
@@ -247,6 +253,7 @@ h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3rem);font-weight:400;col
   <div id="results">
     <div class="result-header">
       <div class="result-eyebrow">Your Clarity &amp; Control Index</div>
+      <div class="result-client" id="r-client"></div>
       <div class="result-score-row">
         <div class="result-num" id="r-num">—</div>
         <div class="result-level" id="r-level">—</div>
@@ -267,7 +274,7 @@ h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3rem);font-weight:400;col
     <div class="result-cta">
       <div class="result-cta-text">
         <strong>Thank you.</strong>
-        We'll send a brief analysis of your score to your email — along with an invitation to connect if you'd like to explore what FCore OS would look like for your business.
+        We've sent this analysis to your email — along with an invitation to book a conversation if you'd like to explore what FCore OS would look like for your business. No commitment, no pressure.
       </div>
     </div>
     <button class="btn-retake" onclick="retake()">↺ Retake the assessment</button>
@@ -283,32 +290,32 @@ const categories = ['Profitability','Cash','Alignment','Visibility','Discipline'
 
 const areaInsights = {
   Profitability: {
-    weak: "You're making decisions without knowing what your business actually earned. The P&L exists — but it's not producing a clean profit number you can trust. This is the most fundamental gap: everything else in financial management depends on knowing your actual margin.",
-    strong: "You have a solid handle on what your business is actually making — that's the foundation everything else builds on, and most businesses your size can't say the same."
+    weak: "You're making decisions without knowing what your business actually earned. The P&L exists — but it's not producing a clean profit number you can trust.",
+    action: "What needs to happen: rebuild your Chart of Accounts to separate revenue streams and cost layers so your P&L shows contribution margin by channel — not just a tax-ready total. Once that's in place, profitability becomes readable every month without any extra calculation."
   },
   Cash: {
-    weak: "You know revenue is coming in, but you're not clear on where it ends up. Cash visibility is the most urgent gap — it's what causes businesses to grow fast and run out of money at the same time. Revenue and cash are not the same thing.",
-    strong: "You know where your cash is and why — that keeps you out of the most common trap: growing yourself into a cash crisis."
+    weak: "You know revenue is coming in, but you're not clear on where it ends up. Revenue and cash are not the same thing — and this gap is what causes businesses to grow fast and run dry at the same time.",
+    action: "What needs to happen: connect your bank feeds, AR, and payroll into a closed loop that reconciles automatically every month. You need a cash flow statement that tells you not just what you have, but why — and what's coming."
   },
   Alignment: {
-    weak: "Your tools are giving you conflicting information. When Stripe, QuickBooks, and your CRM don't agree, every report is a guess with extra steps. Before any other financial work makes sense, the numbers need a single source of truth.",
-    strong: "Your systems are aligned and telling the same story — that's rarer than you'd think at your revenue range, and it's a real operational advantage."
+    weak: "Your tools are giving you conflicting information. When Stripe, QuickBooks, and your CRM don't agree, every report is a guess. You can't manage a business on numbers you don't trust.",
+    action: "What needs to happen: define one source of truth for each data domain — revenue, payroll, cash, receivables — and build integrations that verify against the bank every month. No manual transfers, no reconciliation guesswork."
   },
   Visibility: {
-    weak: "Your reports tell you what happened, not what it means. You're getting tax-ready numbers when you need management-ready numbers — that's a design problem with your Chart of Accounts, not a data problem. The information is there. It's just not structured to surface decisions.",
-    strong: "Your reports are actually built for management, not just compliance — that means you're looking at your business through the right lens."
+    weak: "Your reports tell you what happened for the tax return, not what it means for running the business. The information exists — it's just not structured to surface the decisions you actually need to make.",
+    action: "What needs to happen: redesign your reporting architecture around how your business actually operates. Gross margin by service line, cost per acquisition, labor as a percentage of revenue — the metrics that drive decisions, not just compliance."
   },
   Discipline: {
-    weak: "You're not reviewing your numbers consistently enough to catch problems early or spot opportunities. Financial management works like fitness — consistency beats intensity. A monthly review habit is the single highest-ROI change most business owners can make.",
-    strong: "You review your numbers regularly and consistently — that habit alone puts you ahead of most owners at your revenue range."
+    weak: "Without a consistent monthly review, you're managing by memory and feel. Problems compound quietly for months before becoming visible. By the time you notice, the correction is expensive.",
+    action: "What needs to happen: establish a monthly close cycle with a fixed date, a defined checklist, and a structured review. The review shouldn't take more than two hours — if it does, the system isn't working."
   },
   Priorities: {
-    weak: "You can see the numbers but you don't know what they're telling you to do. This usually means the reports aren't structured to surface the right decisions — not that you're missing analytical ability. The right architecture makes priorities obvious.",
-    strong: "After reviewing your numbers you know exactly what to focus on first — that's the whole point of financial management, and most people never get there."
+    weak: "You can see the numbers but you don't know what to do with them. The reports aren't structured to surface clear actions — so every month ends with data but no direction.",
+    action: "What needs to happen: your management report needs to include a variance layer — what changed, by how much, and what it means. When reports are built correctly, the priorities are obvious without needing an analyst in the room."
   },
   Readiness: {
-    weak: "If a bank, buyer, or the IRS asked for your financials today, you'd have a problem. This isn't just about audits or exits — it's about being able to move fast when opportunity shows up. Financing, partnerships, acquisitions: they all require readiness you build in advance.",
-    strong: "You're prepared for external scrutiny — a bank, a buyer, or the IRS could ask for your financials today and you'd be ready. That gives you options most business owners don't have."
+    weak: "If a bank, buyer, or the IRS asked for your financials today, you'd have a problem. And readiness isn't just about audits — it's about being able to move fast when opportunity shows up.",
+    action: "What needs to happen: move to accrual-basis accounting, ensure your books are clean 12 months back, and maintain a financial package that can be shared within 24 hours. This is what separates businesses that can raise capital from those that can't."
   }
 };
 const questions = [
@@ -416,42 +423,47 @@ function calculate() {
   document.getElementById('r-headline').textContent = level.headline;
   document.getElementById('r-text').textContent = level.text;
 
-  // Find weakest and strongest areas (by normalised score)
-  const normalised = vals.map((v, i) => ({ i, cat: categories[i], norm: v / 10 }));
-  const weakest = [...normalised].sort((a,b) => a.norm - b.norm)[0];
-  const strongest = [...normalised].sort((a,b) => b.norm - a.norm)[0];
-
-  // Weakest area
-  document.getElementById('r-gap').innerHTML = `
-    <div class="result-gap">
-      <div class="result-gap-label">Your biggest gap — ${weakest.cat}</div>
-      <div class="result-gap-text">${areaInsights[weakest.cat].weak}</div>
-    </div>`;
-
-  // Strongest area — only show if score >= 5
-  if (strongest.norm >= 0.5 && strongest.cat !== weakest.cat) {
-    document.getElementById('r-strength').innerHTML = `
-      <div class="result-strength">
-        <div class="result-strength-label">Where you're already ahead — ${strongest.cat}</div>
-        <div class="result-strength-text">${areaInsights[strongest.cat].strong}</div>
-      </div>`;
-  } else {
-    document.getElementById('r-strength').innerHTML = '';
+  // Personalized client block
+  const name = document.getElementById('f-name').value.trim();
+  const industry = document.getElementById('f-industry').value;
+  const revenue = document.getElementById('f-revenue').value;
+  let clientHtml = '';
+  if (name || industry || revenue) {
+    clientHtml += `<div class="result-client">`;
+    if (name) clientHtml += `<div class="result-client-name">${name}</div>`;
+    clientHtml += `<div class="result-client-meta">`;
+    if (industry) clientHtml += `<span>${industry}</span>`;
+    if (revenue) clientHtml += `<span>${revenue}</span>`;
+    clientHtml += `</div></div>`;
   }
+  document.getElementById('r-client').innerHTML = clientHtml;
+
+  // Find bottom 2-3 weakest areas
+  const normalised = vals.map((v, i) => ({ i, cat: categories[i], norm: v / 10 }));
+  const bottom3 = [...normalised].sort((a,b) => a.norm - b.norm).slice(0, 3);
+
+  const gapHtml = bottom3.map((area, idx) => `
+    <div class="result-gap" style="${idx > 0 ? 'margin-top:.8rem' : ''}">
+      <div class="result-gap-label">${idx === 0 ? 'Biggest gap' : idx === 1 ? 'Second priority' : 'Third priority'} — ${area.cat}</div>
+      <div class="result-gap-text">${areaInsights[area.cat].weak}</div>
+      <div class="result-gap-action">${areaInsights[area.cat].action}</div>
+    </div>`).join('');
+
+  document.getElementById('r-gap').innerHTML = gapHtml;
+  document.getElementById('r-strength').innerHTML = '';
 
   setTimeout(() => {
     document.getElementById('r-bar').style.width = score + '%';
   }, 100);
 
   const bd = vals.map((v,i) => {
-    const earned = Math.round((v/10)*weights[i]);
-    const max = weights[i];
-    const cls = earned >= max*0.8 ? 'full' : earned >= max*0.4 ? 'partial' : 'low';
+    const earned = v;
+    const cls = v >= 8 ? 'full' : v >= 4 ? 'partial' : 'low';
     const qShort = questions[i].replace(/([A-Z]{2,})/g, '<strong>$1</strong>');
     return `<div class="rb-item">
       <div class="rb-cat">${categories[i]}</div>
       <div class="rb-q">${qShort}</div>
-      <div class="rb-score ${cls}">${earned}/${max}</div>
+      <div class="rb-score ${cls}">${v}</div>
     </div>`;
   }).join('');
   document.getElementById('r-breakdown').innerHTML = bd;
