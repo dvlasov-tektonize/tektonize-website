@@ -69,19 +69,25 @@ h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3rem);font-weight:400;col
 .submit-card{background:var(--w);border:1px solid var(--line);border-radius:6px;padding:1.5rem 2rem;margin-top:1.5rem}
 .btn-submit{width:100%;background:var(--ink);color:#fff;font-family:var(--sans);font-size:.9rem;font-weight:500;padding:1.1rem 2rem;border:none;cursor:pointer;border-radius:3px;transition:background .2s;letter-spacing:.02em;display:flex;align-items:center;justify-content:center;gap:.6rem}
 .btn-submit:hover{background:var(--orange)}
+.field input.error,.field select.error{border-color:#BE3030;background:#FFF5F5}
+.field .field-error{font-size:.72rem;color:#BE3030;margin-top:.3rem}
+.card.q-error{border-color:#BE3030;background:#FFF9F9}
+.card.q-error .q-label{color:#BE3030}
+.validation-msg{background:#FFF5F5;border:1px solid #F0BABA;border-radius:4px;padding:.9rem 1.2rem;margin-bottom:1rem;font-size:.85rem;color:#BE3030;font-weight:400;display:none}
+.validation-msg.show{display:block}
 .btn-submit svg{width:16px;height:16px}
 
 /* RESULTS */
 #results{display:none}
-.result-header{background:var(--ink);border-radius:6px;padding:2.5rem 2rem;margin-bottom:1rem;position:relative;overflow:hidden}
-.result-header::after{content:'';position:absolute;right:-30px;top:50%;transform:translateY(-50%);width:200px;height:200px;border-radius:50%;border:1px solid rgba(212,85,0,.2);pointer-events:none}
-.result-eyebrow{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.8rem}
+.result-header{background:var(--w);border:1px solid var(--line);border-radius:6px;padding:2.5rem 2rem;margin-bottom:1rem;position:relative;overflow:hidden}
+.result-header::after{content:'';position:absolute;right:-30px;top:50%;transform:translateY(-50%);width:200px;height:200px;border-radius:50%;border:1px solid rgba(212,85,0,.15);pointer-events:none}
+.result-eyebrow{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-bottom:.8rem}
 .result-score-row{display:flex;align-items:baseline;gap:1rem;margin-bottom:.5rem}
 .result-num{font-family:var(--serif);font-size:5rem;font-weight:300;color:var(--orange);line-height:1;letter-spacing:-.03em}
-.result-level{font-family:var(--serif);font-size:1.8rem;font-weight:300;font-style:italic;color:#fff}
+.result-level{font-family:var(--serif);font-size:1.8rem;font-weight:300;font-style:italic;color:var(--ink)}
 .result-bar-wrap{margin-top:1.5rem}
-.result-bar-lbl{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.5rem}
-.result-bar-bg{height:5px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.result-bar-lbl{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:.5rem}
+.result-bar-bg{height:5px;background:var(--line);border-radius:3px;overflow:hidden}
 .result-bar-fill{height:100%;border-radius:3px;background:var(--orange);transition:width 1s ease}
 .result-body{background:var(--w);border:1px solid var(--line);border-radius:6px;padding:2rem;margin-bottom:1rem}
 .result-headline{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--ink);margin-bottom:.6rem;line-height:1.3}
@@ -101,6 +107,12 @@ h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3rem);font-weight:400;col
 .result-cta-text strong{color:#fff;font-weight:500;display:block;margin-bottom:.2rem}
 .btn-cta-white{background:#fff;color:var(--orange);font-family:var(--sans);font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.8rem 1.6rem;border:none;cursor:pointer;border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;white-space:nowrap;transition:opacity .2s}
 .btn-cta-white:hover{opacity:.9}
+.result-gap{margin:1.2rem 0;padding:1.2rem 1.5rem;border-left:3px solid var(--orange);background:#FDF1EB}
+.result-gap-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:.4rem}
+.result-gap-text{font-size:.88rem;font-weight:300;color:var(--mid);line-height:1.75}
+.result-strength{margin:1.2rem 0 1.8rem;padding:1.2rem 1.5rem;border-left:3px solid #347010;background:#F0F7E8}
+.result-strength-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#347010;font-weight:600;margin-bottom:.4rem}
+.result-strength-text{font-size:.88rem;font-weight:300;color:var(--mid);line-height:1.75}
 .btn-retake{display:block;text-align:center;margin-top:1rem;font-size:.75rem;color:var(--soft);cursor:pointer;background:none;border:none;font-family:var(--sans);text-decoration:underline}
 .btn-retake:hover{color:var(--ink)}
 </style>
@@ -134,7 +146,7 @@ h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3rem);font-weight:400;col
         </div>
         <div class="field">
           <label>Email <span class="req">*</span></label>
-          <input type="email" id="f-email" placeholder="john@company.com" required>
+          <input type="email" id="f-email" placeholder="john@company.com" required oninput="this.classList.remove('error')">
         </div>
         <div class="field">
           <label>Annual revenue</label>
@@ -220,6 +232,7 @@ h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3rem);font-weight:400;col
       <div class="slider-ticks" id="ticks7"><span id="t7-0">0</span><span id="t7-1">1</span><span id="t7-2">2</span><span id="t7-3">3</span><span id="t7-4">4</span><span id="t7-5">5</span><span id="t7-6">6</span><span id="t7-7">7</span><span id="t7-8">8</span><span id="t7-9">9</span><span id="t7-10">10</span></div>
     </div>
 
+    <div class="validation-msg" id="val-msg"></div>
     <!-- SUBMIT -->
     <div class="submit-card">
       <button class="btn-submit" onclick="calculate()">
@@ -246,15 +259,16 @@ h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3rem);font-weight:400;col
     <div class="result-body">
       <div class="result-headline" id="r-headline">—</div>
       <div class="result-text" id="r-text">—</div>
+      <div id="r-gap"></div>
+      <div id="r-strength"></div>
       <div class="breakdown-title">Question breakdown</div>
       <div id="r-breakdown"></div>
     </div>
     <div class="result-cta">
       <div class="result-cta-text">
-        <strong>Ready to move your score?</strong>
-        One conversation — no commitment. We'll show you exactly what FCore OS would look like for your business.
+        <strong>Thank you.</strong>
+        We'll send a brief analysis of your score to your email — along with an invitation to connect if you'd like to explore what FCore OS would look like for your business.
       </div>
-      <a class="btn-cta-white" href="index.html#cta">Send us a message →</a>
     </div>
     <button class="btn-retake" onclick="retake()">↺ Retake the assessment</button>
   </div>
@@ -263,8 +277,40 @@ h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3rem);font-weight:400;col
 
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQ7CkTdGQy0yxkS92Nj4ywl1UFyN7l8ZGTeFHhiRKdqLTRXrMpjA9QbtvyzVFCfRP_/exec';
+const touched = new Set();
 const weights = [20, 20, 15, 15, 15, 10, 5];
 const categories = ['Profitability','Cash','Alignment','Visibility','Discipline','Priorities','Readiness'];
+
+const areaInsights = {
+  Profitability: {
+    weak: "You're making decisions without knowing what your business actually earned. The P&L exists — but it's not producing a clean profit number you can trust. This is the most fundamental gap: everything else in financial management depends on knowing your actual margin.",
+    strong: "You have a solid handle on what your business is actually making — that's the foundation everything else builds on, and most businesses your size can't say the same."
+  },
+  Cash: {
+    weak: "You know revenue is coming in, but you're not clear on where it ends up. Cash visibility is the most urgent gap — it's what causes businesses to grow fast and run out of money at the same time. Revenue and cash are not the same thing.",
+    strong: "You know where your cash is and why — that keeps you out of the most common trap: growing yourself into a cash crisis."
+  },
+  Alignment: {
+    weak: "Your tools are giving you conflicting information. When Stripe, QuickBooks, and your CRM don't agree, every report is a guess with extra steps. Before any other financial work makes sense, the numbers need a single source of truth.",
+    strong: "Your systems are aligned and telling the same story — that's rarer than you'd think at your revenue range, and it's a real operational advantage."
+  },
+  Visibility: {
+    weak: "Your reports tell you what happened, not what it means. You're getting tax-ready numbers when you need management-ready numbers — that's a design problem with your Chart of Accounts, not a data problem. The information is there. It's just not structured to surface decisions.",
+    strong: "Your reports are actually built for management, not just compliance — that means you're looking at your business through the right lens."
+  },
+  Discipline: {
+    weak: "You're not reviewing your numbers consistently enough to catch problems early or spot opportunities. Financial management works like fitness — consistency beats intensity. A monthly review habit is the single highest-ROI change most business owners can make.",
+    strong: "You review your numbers regularly and consistently — that habit alone puts you ahead of most owners at your revenue range."
+  },
+  Priorities: {
+    weak: "You can see the numbers but you don't know what they're telling you to do. This usually means the reports aren't structured to surface the right decisions — not that you're missing analytical ability. The right architecture makes priorities obvious.",
+    strong: "After reviewing your numbers you know exactly what to focus on first — that's the whole point of financial management, and most people never get there."
+  },
+  Readiness: {
+    weak: "If a bank, buyer, or the IRS asked for your financials today, you'd have a problem. This isn't just about audits or exits — it's about being able to move fast when opportunity shows up. Financing, partnerships, acquisitions: they all require readiness you build in advance.",
+    strong: "You're prepared for external scrutiny — a bank, a buyer, or the IRS could ask for your financials today and you'd be ready. That gives you options most business owners don't have."
+  }
+};
 const questions = [
   'Do you know exactly how much money your business is MAKING?',
   'Do you know WHERE your business money actually is right now?',
@@ -282,6 +328,7 @@ const levels = [
 ];
 
 function updateSlider(n, v) {
+  touched.add(n);
   const sl = document.getElementById('s'+n);
   const pct = (v/10)*100;
   sl.style.background = `linear-gradient(to right, var(--orange) ${pct}%, var(--line) ${pct}%)`;
@@ -289,14 +336,52 @@ function updateSlider(n, v) {
     const t=document.getElementById('t'+n+'-'+i);
     if(t) t.className = i===parseInt(v) ? 'active' : '';
   }
+  // Clear error state when touched
+  const card = document.getElementById('card-q'+n);
+  if(card) card.classList.remove('q-error');
 }
 
 // Init all sliders at 0
 [1,2,3,4,5,6,7].forEach(n => updateSlider(n, 0));
 
 function calculate() {
-  const email = document.getElementById('f-email').value.trim();
-  if (!email) { alert('Please enter your email address.'); return; }
+  let errors = [];
+  let firstError = null;
+
+  // Validate email
+  const emailEl = document.getElementById('f-email');
+  const email = emailEl.value.trim();
+  if (!email) {
+    emailEl.classList.add('error');
+    errors.push('email address');
+    if (!firstError) firstError = emailEl;
+  } else {
+    emailEl.classList.remove('error');
+  }
+
+  // Validate all sliders touched
+  const untouched = [];
+  for (let n = 1; n <= 7; n++) {
+    if (!touched.has(n)) {
+      untouched.push(n);
+      const card = document.getElementById('card-q'+n);
+      if (card) card.classList.add('q-error');
+      if (!firstError) firstError = card;
+    }
+  }
+  if (untouched.length > 0) {
+    errors.push(`${untouched.length} unanswered question${untouched.length > 1 ? 's' : ''}`);
+  }
+
+  if (errors.length > 0) {
+    const msg = document.getElementById('val-msg');
+    msg.textContent = 'Please complete the following before continuing: ' + errors.join(' and ') + '.';
+    msg.classList.add('show');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  document.getElementById('val-msg').classList.remove('show');
 
   let total = 0;
   const vals = [];
@@ -330,6 +415,29 @@ function calculate() {
   document.getElementById('r-level').textContent = level.name;
   document.getElementById('r-headline').textContent = level.headline;
   document.getElementById('r-text').textContent = level.text;
+
+  // Find weakest and strongest areas (by normalised score)
+  const normalised = vals.map((v, i) => ({ i, cat: categories[i], norm: v / 10 }));
+  const weakest = [...normalised].sort((a,b) => a.norm - b.norm)[0];
+  const strongest = [...normalised].sort((a,b) => b.norm - a.norm)[0];
+
+  // Weakest area
+  document.getElementById('r-gap').innerHTML = `
+    <div class="result-gap">
+      <div class="result-gap-label">Your biggest gap — ${weakest.cat}</div>
+      <div class="result-gap-text">${areaInsights[weakest.cat].weak}</div>
+    </div>`;
+
+  // Strongest area — only show if score >= 5
+  if (strongest.norm >= 0.5 && strongest.cat !== weakest.cat) {
+    document.getElementById('r-strength').innerHTML = `
+      <div class="result-strength">
+        <div class="result-strength-label">Where you're already ahead — ${strongest.cat}</div>
+        <div class="result-strength-text">${areaInsights[strongest.cat].strong}</div>
+      </div>`;
+  } else {
+    document.getElementById('r-strength').innerHTML = '';
+  }
 
   setTimeout(() => {
     document.getElementById('r-bar').style.width = score + '%';
