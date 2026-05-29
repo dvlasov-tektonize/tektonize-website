@@ -262,6 +262,7 @@ h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3rem);font-weight:400;col
 </div><!-- /page -->
 
 <script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQ7CkTdGQy0yxkS92Nj4ywl1UFyN7l8ZGTeFHhiRKdqLTRXrMpjA9QbtvyzVFCfRP_/exec';
 const weights = [20, 20, 15, 15, 15, 10, 5];
 const categories = ['Profitability','Cash','Alignment','Visibility','Discipline','Priorities','Readiness'];
 const questions = [
@@ -306,6 +307,20 @@ function calculate() {
   }
   const score = Math.round(total);
   const level = levels.find(l => score >= l.min && score <= l.max);
+
+  // Submit to Google Sheets
+  const formData = new URLSearchParams({
+    source:   'cci',
+    name:     document.getElementById('f-name').value,
+    email:    email,
+    industry: document.getElementById('f-industry').value,
+    revenue:  document.getElementById('f-revenue').value,
+    score:    score,
+    level:    level.name,
+    q1: vals[0], q2: vals[1], q3: vals[2], q4: vals[3],
+    q5: vals[4], q6: vals[5], q7: vals[6]
+  });
+  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body: formData }).catch(()=>{});
 
   document.getElementById('assessment-form').style.display = 'none';
   document.getElementById('results').style.display = 'block';
