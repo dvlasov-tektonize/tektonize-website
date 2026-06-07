@@ -426,6 +426,11 @@ footer{padding:2rem 3rem;border-top:1px solid var(--line);display:flex;justify-c
       <div class="form-head">Send us a message</div>
       <form action="#" method="POST" onsubmit="handleForm(event)">
         <div class="form-grid">
+          <div class="field" style="display:none;position:absolute;left:-9999px" aria-hidden="true">
+            <label>Leave this empty</label>
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="form_time" id="form_time">
           <div class="field">
             <label>Your name</label>
             <input type="text" name="name" placeholder="Jane Smith" required>
@@ -481,10 +486,26 @@ const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecti
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQ7CkTdGQy0yxkS92Nj4ywl1UFyN7l8ZGTeFHhiRKdqLTRXrMpjA9QbtvyzVFCfRP_/exec';
 
+document.addEventListener('DOMContentLoaded', function(){
+  var ft = document.getElementById('form_time');
+  if(ft) ft.value = Date.now();
+});
+
 function handleForm(e){
   e.preventDefault();
   const form = e.target;
   const btn = form.querySelector('.form-submit');
+
+  // Honeypot check
+  if(form.querySelector('[name=website]') && form.querySelector('[name=website]').value.length > 0){
+    btn.textContent = 'Message sent ✓'; btn.style.background='#347010'; return;
+  }
+  // Time check — must take at least 4 seconds
+  const ft = form.querySelector('[name=form_time]');
+  if(ft && ft.value && (Date.now() - parseInt(ft.value)) < 4000){
+    btn.textContent = 'Message sent ✓'; btn.style.background='#347010'; return;
+  }
+
   btn.textContent = 'Sending...';
   btn.disabled = true;
 
