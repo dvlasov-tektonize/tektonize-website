@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+</helmet>
+<div>
+  <div style="position:fixed;top:0;left:0;right:0;height:4px;background:#DB5526;z-index:200"></div>
+  <nav data-site-nav="true" style="position:fixed;top:4px;left:0;right:0;z-index:100;height:60px;padding:0 2.4rem;display:flex;align-items:center;justify-content:space-between;transition:background .3s,border-color .3s;background:{{ navBg }};border-bottom:1px solid {{ navBorder }};backdrop-filter:{{ navBlur }}">
+    <a href="index.html" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:1.75rem;color:#15120D;text-decoration:none;letter-spacing:.02em">Tektonize<span style="color:#DB5526">.</span></a>
+    <div style="display:flex;align-items:center;gap:2rem">
+      <a href="index.html#solution" style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#57534B;text-decoration:none;font-weight:500">Approach</a>
+      <a href="index.html#proof" style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#57534B;text-decoration:none;font-weight:500">Results</a>
+      <a href="faq.html" style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#57534B;text-decoration:none;font-weight:500">FAQ</a>
+      <a href="index.html#contact" style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#57534B;text-decoration:none;font-weight:500;white-space:nowrap">Contact Us</a>
+    </div>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { scrolled: false };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const s = window.scrollY > 40;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+
+  renderVals() {
+    const s = this.state.scrolled;
+    return {
+      navBg: s ? 'rgba(246,244,239,.9)' : 'transparent',
+      navBorder: s ? '#E3DFD6' : 'transparent',
+      navBlur: s ? 'blur(10px)' : 'none',
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,300&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,::before,::after{box-sizing:border-box}
+  :root{--orange-500:#DB5526;--orange-600:#C2461C;--orange-tint:rgba(219,85,38,.08);--ink-900:#15120D;--ink-700:#57534B;--ink-500:#8C887F;--surface-cream:#F6F4EF;--surface-warm:#EFEBE2;--surface-card:#FFFFFF;--ink-bg:#16130E;--ink-bg-2:#1B1812;--line-300:#E3DFD6;--line-200:#EDE9E0;--line-400:#D8D3C7;--status-blind:#BE3030;--status-partial:#C07810;--status-clear:#B04820;--status-full:#347010;--font-display:'Instrument Serif',Georgia,serif;--font-sans:'Space Grotesk',-apple-system,sans-serif;--font-wordmark:'Cormorant Garamond',Georgia,serif;--lead:clamp(1.35rem,1.9vw,1.6rem);--space-gutter:2.4rem;--shadow-cta:0 6px 20px -10px rgba(219,85,38,.6);--grid-dot:#E1DCD0;--grid-size:26px}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--surface-cream);color:var(--ink-700);font-family:var(--font-sans);font-weight:300;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--orange-500);color:#fff}
+  .pad-x{padding-left:var(--space-gutter);padding-right:var(--space-gutter)}
+  .tk-grid-bg{background-image:radial-gradient(circle,var(--grid-dot) 1.3px,transparent 1.3px);background-size:var(--grid-size) var(--grid-size)}
+  details.faq-item>summary{list-style:none}
+  details.faq-item>summary::-webkit-details-marker{display:none}
+  details.faq-item[open] .faq-q-text{color:var(--orange-500)}
+  details.faq-item[open] .faq-bar-h{background:var(--orange-500)}
+  details.faq-item[open] .faq-plus{opacity:0}
+  .faq-q:hover .faq-q-text{color:var(--orange-500)}
+  .faq-a p{margin:0 0 1rem}
+  .faq-a p:last-child{margin-bottom:0}
+  .faq-a strong{color:var(--ink-900);font-weight:500}
+  @media (max-width:760px){
+    .faq-hero-inner{grid-template-columns:1fr !important;gap:2rem !important;align-items:start !important}
+    .cta-wrap{grid-template-columns:1fr !important;gap:3rem !important}
+    .form-grid{grid-template-columns:1fr !important}
+  }
+</style>
+</helmet>
+
+<div>
+  <dc-import name="Site Header" hint-size="100%,64px"></dc-import>
+
+  <section class="tk-grid-bg pad-x" style="padding:8rem 2.4rem 5rem;border-bottom:1px solid var(--line-300);position:relative;overflow:hidden">
+    <div style="position:absolute;right:4%;bottom:-14%;font-family:var(--font-display);font-style:italic;font-size:26vw;line-height:1;color:rgba(21,18,13,0.043);pointer-events:none;user-select:none;z-index:0">?</div>
+    <div class="faq-hero-inner" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;position:relative;z-index:1">
+      <div>
+        <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1.6rem">
+          <span style="width:24px;height:1px;background:var(--orange-500)"></span>
+          <span style="font-family:var(--font-sans);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-500);font-weight:500">Frequently asked questions</span>
+        </div>
+        <h1 style="font-family:var(--font-display);font-weight:400;font-size:clamp(3rem,6.5vw,5.6rem);line-height:1;letter-spacing:-0.02em;color:var(--ink-900);margin:0">Straight<br><span style="font-style:italic;color:var(--orange-500)">answers.</span></h1>
+      </div>
+      <div>
+        <p style="font-family:var(--font-display);font-size:var(--lead);color:var(--ink-700);line-height:1.4;max-width:440px;margin:0 0 2rem">The questions most owners ask before they start. If yours isn't here — <span style="color:var(--ink-900)">ask us directly.</span> The first conversation is free, with no commitment.</p>
+        <a href="#cta" style="display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--font-sans);font-size:13px;letter-spacing:0.05em;text-transform:uppercase;font-weight:500;text-decoration:none;cursor:pointer;background:var(--orange-500);color:#fff;padding:1.05rem 2.2rem;box-shadow:var(--shadow-cta)">Ask us directly&nbsp;→</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="pad-x" style="max-width:1180px;margin:0 auto;padding:0 2.4rem 7rem">
+
+    <section data-reveal style="padding-top:5rem;opacity:0;transform:translateY(14px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)">
+      <div style="display:flex;align-items:center;gap:0.8rem">
+        <span style="width:24px;height:1px;background:var(--orange-500)"></span>
+        <span style="font-family:var(--font-sans);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-500);font-weight:500">What it is</span>
+      </div>
+      <div style="margin-top:2.5rem;border-top:1px solid var(--line-300)">
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“Is this just bookkeeping with a fancy name?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>No — but it includes bookkeeping. Your books will be clean, accurate, and tax-ready. That's the foundation. What FCore OS adds is the architecture, the system integrations, and the management rhythm that turn your books into a tool for running and growing your business.</p>
+            <p>Think of it this way: <strong>bookkeeping records what happened. FCore OS tells you what it means — and what to do next.</strong></p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“What's the difference between FCore OS and hiring a bookkeeper?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>A bookkeeper records transactions and closes the books. That's their job, and a good one does it well. FCore OS is the layer above that: it connects all your business systems into one coherent picture, restructures your accounting to reflect how your business actually operates, and creates a monthly management rhythm.</p>
+            <p>You may still work with a bookkeeper inside FCore OS — but the system turns their output into something you can actually use to run your business.</p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“What's the difference between FCore OS and a fractional CFO?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>A fractional CFO brings strategic financial judgment — budgeting, fundraising, financial modeling. They're typically priced for businesses $10M+ and work at the strategic layer.</p>
+            <p>FCore OS works at the infrastructure layer: building the system, connecting the data, creating the reporting foundation. <strong>Many businesses actually need FCore OS before a fractional CFO would even be useful</strong> — because without the infrastructure, there's nothing meaningful for a CFO to work with.</p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“Is this a software product or a service?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>It's a service that builds and maintains a system. There's no FCore OS app to download. We work with the tools you already have — QuickBooks, your CRM, payroll platform, payment processor — and build the connective architecture between them.</p>
+            <p>The ongoing engagement includes managing that system, running the monthly close, and delivering the reports that tell you how your business is performing.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section data-reveal style="padding-top:5rem;margin-top:5rem;border-top:1px solid var(--line-300);opacity:0;transform:translateY(14px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)">
+      <div style="display:flex;align-items:center;gap:0.8rem">
+        <span style="width:24px;height:1px;background:var(--orange-500)"></span>
+        <span style="font-family:var(--font-sans);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-500);font-weight:500">Getting started</span>
+      </div>
+      <div style="margin-top:2.5rem;border-top:1px solid var(--line-300)">
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“I already have a bookkeeper. Do I need to replace them?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>Not necessarily. Some clients keep their existing bookkeeper and we build the system architecture on top of their work. Others transition to us fully.</p>
+            <p>We assess this in the first conversation — what matters is whether the current setup can support the FCore OS architecture. If it can, we work alongside. If it can't, we'll tell you honestly.</p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“My books are a complete mess right now. Is it too late to start?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>Not at all — this is actually the most common starting point. Phase 4 of the FCore OS implementation is specifically about rebuilding the accounting foundation: cleaning up the Chart of Accounts, correcting historical entries, and establishing accrual basis.</p>
+            <p><strong>The mess is the reason to start, not a reason to wait.</strong></p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“What happens in the first conversation?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>Three things. We learn about your business — your current setup, the tools you use, where the friction is. We show you what FCore OS would look like specifically for your business and industry. And you decide whether it makes sense.</p>
+            <p>No pitch, no pressure. If it's not the right fit, you keep whatever clarity the conversation gave you.</p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“What do I need to prepare before we start?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>Not much. Access to your QuickBooks, a list of the tools you're currently using, and 30 minutes. We don't need you to have everything figured out before the first call — <strong>understanding where you are is the whole point of Phase 1.</strong></p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section data-reveal style="padding-top:5rem;margin-top:5rem;border-top:1px solid var(--line-300);opacity:0;transform:translateY(14px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)">
+      <div style="display:flex;align-items:center;gap:0.8rem">
+        <span style="width:24px;height:1px;background:var(--orange-500)"></span>
+        <span style="font-family:var(--font-sans);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-500);font-weight:500">Process &amp; timeline</span>
+      </div>
+      <div style="margin-top:2.5rem;border-top:1px solid var(--line-300)">
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“How long does implementation take?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>The six-phase build typically takes 3–6 months, depending on the complexity of your business, the state of your existing books, and how many systems need to be integrated. Simpler businesses with cleaner books move faster. Multi-location businesses with multiple revenue channels take longer.</p>
+            <p>We scope this specifically for you after the diagnostic session.</p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“What do I need to do on my side during implementation?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>One organized person who can collect and provide information on a regular cadence. Not a bookkeeper, not a financial expert — just someone who can answer questions, provide access, and follow a checklist.</p>
+            <p><strong>We do the rest.</strong> The system is designed so it doesn't require ongoing financial expertise on your team to operate.</p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“What happens after the 6 phases are complete?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>The ongoing engagement begins. Monthly close, management reports, and the operational rhythm that keeps your Financial CCI in the Full Control range.</p>
+            <p>We're not a one-time project — we're your ongoing financial infrastructure partner. The implementation builds the system; the retainer keeps it running and evolving as your business grows.</p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“How does the monthly rhythm work in practice?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>Once a month, your designated contact provides the standard data package — receipts, payroll reports, any transactions that need context. We close the books, reconcile all data flows against the bank, and deliver your management reports.</p>
+            <p>You review the numbers, we walk through what they mean, and you make decisions. <strong>It typically takes you less than two hours per month</strong> to participate meaningfully in your own financial management.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section data-reveal style="padding-top:5rem;margin-top:5rem;border-top:1px solid var(--line-300);opacity:0;transform:translateY(14px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)">
+      <div style="display:flex;align-items:center;gap:0.8rem">
+        <span style="width:24px;height:1px;background:var(--orange-500)"></span>
+        <span style="font-family:var(--font-sans);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-500);font-weight:500">Pricing</span>
+      </div>
+      <div style="margin-top:2.5rem;border-top:1px solid var(--line-300)">
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“What does it cost?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>FCore OS is priced as a fixed monthly retainer — not hourly. You know exactly what you're paying each month, with no surprises and no overages. The specific number depends on your business complexity, number of systems to integrate, and the scope of the ongoing engagement.</p>
+            <p>We scope the engagement after the first conversation. The structure is designed to deliver a clear return: better financial decisions, access to capital, and a business that's worth significantly more when you're ready to sell.</p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“Is there a contract? Can I cancel?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>Yes, there's an engagement agreement. The implementation phase has a defined scope and timeline. The ongoing retainer operates on a rolling basis.</p>
+            <p>We're not in the business of locking clients in. If FCore OS isn't delivering Clarity and Control, that's a problem we want to know about and fix — not something we want to paper over with a long-term contract.</p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“What's included in the monthly retainer?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>Monthly close and bank reconciliation across all integrated data flows. Management P&amp;L, cash flow statement, and operational dashboard. Monthly review session. Year-round tax readiness. Ongoing system maintenance and integrations management. Access to us when something needs attention between cycles.</p>
+            <p><strong>Everything your business needs to maintain Clarity and Control — on an ongoing basis.</strong></p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section data-reveal style="padding-top:5rem;margin-top:5rem;border-top:1px solid var(--line-300);opacity:0;transform:translateY(14px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)">
+      <div style="display:flex;align-items:center;gap:0.8rem">
+        <span style="width:24px;height:1px;background:var(--orange-500)"></span>
+        <span style="font-family:var(--font-sans);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-500);font-weight:500">Technical</span>
+      </div>
+      <div style="margin-top:2.5rem;border-top:1px solid var(--line-300)">
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“Do you work with my tools — Toast, Zenoti, Vagaro, Shopify?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>Yes. We work with Toast, Clover, Square, Stripe, Shopify, Amazon Seller Central, Zenoti, Vagaro, HubSpot, JobNimbus, Paychex, ADP, and most major banking platforms.</p>
+            <p>If you're using a tool we haven't integrated before, we assess the options in Phase 3. Most modern business tools have APIs or export capabilities that can be incorporated into the system.</p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“What if I'm not using QuickBooks?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>QuickBooks is our preferred accounting core — it's the most capable platform for the FCore OS architecture and we hold a Certified ProAdvisor, Platinum Tier certification. If you're on a different platform, we'll assess it in the diagnostic.</p>
+            <p>In most cases, we recommend migrating to QuickBooks Online as part of Phase 4. We handle the migration.</p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“Do you work remotely or do you need to be on-site?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>Fully remote. All client work is delivered via cloud-based tools — QuickBooks Online, shared drives, video calls, and secure data transfer. We work with clients across the United States.</p>
+            <p>Location has never been a limitation.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section data-reveal style="padding-top:5rem;margin-top:5rem;border-top:1px solid var(--line-300);opacity:0;transform:translateY(14px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)">
+      <div style="display:flex;align-items:center;gap:0.8rem">
+        <span style="width:24px;height:1px;background:var(--orange-500)"></span>
+        <span style="font-family:var(--font-sans);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-500);font-weight:500">Results</span>
+      </div>
+      <div style="margin-top:2.5rem;border-top:1px solid var(--line-300)">
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“How do I know if it's working?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>Your Financial CCI score. We measure it at the start of every engagement and again after implementation. The delta is the proof.</p>
+            <p>Beyond the number: you'll know it's working when you open your monthly report and understand it without a phone call, when you can answer a banker's questions without scrambling, and when you make a pricing or hiring decision based on what the numbers actually say — not what you think they say.</p>
+          </div>
+        </details>
+        <details class="faq-item" style="border-bottom:1px solid var(--line-300)">
+          <summary class="faq-q" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.5rem 0;cursor:pointer;user-select:none">
+            <span class="faq-q-text" style="font-family:var(--font-display);font-size:1.45rem;font-weight:400;color:var(--ink-900);line-height:1.3;transition:color 0.2s">“How soon will I see a difference?”</span>
+            <span class="faq-icon" style="position:relative;width:22px;height:22px;flex:0 0 auto"><span class="faq-bar-h" style="position:absolute;top:50%;left:50%;width:13px;height:1.5px;background:var(--ink-900);transform:translate(-50%,-50%);transition:background 0.25s"></span><span class="faq-plus" style="position:absolute;top:50%;left:50%;width:1.5px;height:13px;background:var(--ink-900);transform:translate(-50%,-50%);transition:opacity 0.25s"></span></span>
+          </summary>
+          <div class="faq-a" style="padding:0 3rem 1.7rem 0;font-size:0.96rem;font-weight:300;color:var(--ink-700);line-height:1.9;max-width:680px">
+            <p>Early signals appear during Phase 4, when the accounting foundation is rebuilt — many clients describe this as the first time their books “made sense.” Full Clarity and Control typically comes online in Phase 6, when the operational rhythm is established.</p>
+            <p><strong>From first conversation to full system: 3–6 months.</strong> After that, it runs — and improves — every month.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </div>
+
+  <section id="cta" data-reveal class="pad-x" style="background:var(--ink-bg);padding:7rem 2.4rem;position:relative;overflow:hidden;opacity:0;transform:translateY(14px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)">
+    <div style="position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:500px;height:500px;border-radius:50%;border:1px solid rgba(255,255,255,0.04);pointer-events:none"></div>
+    <div style="position:absolute;right:-10px;top:50%;transform:translateY(-50%);width:320px;height:320px;border-radius:50%;border:2px solid rgba(219,85,38,0.15);pointer-events:none"></div>
+    <div class="cta-wrap" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;position:relative;z-index:1">
+      <div>
+        <div style="font-family:var(--font-display);font-size:clamp(2.4rem,5vw,4rem);color:#fff;line-height:1.06;margin-bottom:1.4rem">One conversation.<br><span style="font-style:italic;color:var(--orange-500)">No commitment.</span></div>
+        <p style="font-size:0.93rem;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.85;max-width:380px;margin:0 0 2.6rem">We don't pitch. We learn about your business, show you what FCore OS would look like for you — and you decide if it makes sense. Zero pressure.</p>
+        <div style="display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,0.08)">
+          <div style="display:flex;align-items:flex-start;gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid rgba(255,255,255,0.08)">
+            <div style="font-family:var(--font-display);font-style:italic;font-size:1.5rem;color:var(--orange-500);min-width:28px;line-height:1.1;flex:0 0 auto">1</div>
+            <div><div style="font-size:0.88rem;font-weight:500;color:rgba(255,255,255,0.8);margin-bottom:0.2rem">We learn about your business</div><div style="font-size:0.8rem;font-weight:300;color:rgba(255,255,255,0.35);line-height:1.5">Your current setup, tools, where the friction is. 30 minutes.</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid rgba(255,255,255,0.08)">
+            <div style="font-family:var(--font-display);font-style:italic;font-size:1.5rem;color:var(--orange-500);min-width:28px;line-height:1.1;flex:0 0 auto">2</div>
+            <div><div style="font-size:0.88rem;font-weight:500;color:rgba(255,255,255,0.8);margin-bottom:0.2rem">We show you what FCore OS looks like for you</div><div style="font-size:0.8rem;font-weight:300;color:rgba(255,255,255,0.35);line-height:1.5">A specific picture of the system built for your business and industry.</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:1.2rem;padding:1.1rem 0;border-bottom:1px solid rgba(255,255,255,0.08)">
+            <div style="font-family:var(--font-display);font-style:italic;font-size:1.5rem;color:var(--orange-500);min-width:28px;line-height:1.1;flex:0 0 auto">3</div>
+            <div><div style="font-size:0.88rem;font-weight:500;color:rgba(255,255,255,0.8);margin-bottom:0.2rem">You decide</div><div style="font-size:0.8rem;font-weight:300;color:rgba(255,255,255,0.35);line-height:1.5">No pressure, no follow-up calls. If it makes sense, we move forward. If not, you keep the clarity.</div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.8rem">Send us a message</div>
+        <form ref="{{ formRef }}" onSubmit="{{ onSubmit }}">
+          <div aria-hidden="true" style="display:none;position:absolute;left:-9999px"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:2.5rem 0;border-top:1px solid rgba(255,255,255,0.1)">
+              <div style="font-family:var(--font-display);font-size:2rem;font-style:italic;color:#fff;margin-bottom:0.8rem">Thank you.</div>
+              <p style="font-size:0.9rem;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.8;margin:0">We'll be in touch within one business day.</p>
+            </div>
+          </sc-if>
+          <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <div>
+          <div class="form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem">
+            <div style="display:flex;flex-direction:column;gap:0.4rem"><label style="font-family:var(--font-sans);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4)">Your name<span style="color:var(--orange-500)"> *</span></label><input name="name" placeholder="Jane Smith" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);font-family:var(--font-sans);font-size:0.85rem;font-weight:300;padding:0.75rem 1rem;outline:none;width:100%;box-sizing:border-box"></div>
+            <div style="display:flex;flex-direction:column;gap:0.4rem"><label style="font-family:var(--font-sans);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4)">Email<span style="color:var(--orange-500)"> *</span></label><input name="email" type="email" placeholder="jane@yourbusiness.com" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);font-family:var(--font-sans);font-size:0.85rem;font-weight:300;padding:0.75rem 1rem;outline:none;width:100%;box-sizing:border-box"></div>
+            <div style="display:flex;flex-direction:column;gap:0.4rem"><label style="font-family:var(--font-sans);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4)">Business name</label><input name="business" placeholder="Acme Co." style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);font-family:var(--font-sans);font-size:0.85rem;font-weight:300;padding:0.75rem 1rem;outline:none;width:100%;box-sizing:border-box"></div>
+            <div style="display:flex;flex-direction:column;gap:0.4rem"><label style="font-family:var(--font-sans);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4)">Annual revenue</label><select name="revenue" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);font-family:var(--font-sans);font-size:0.85rem;font-weight:300;padding:0.75rem 1rem;outline:none;width:100%;box-sizing:border-box">
+              <option value="" style="background:#16130E">Select range</option>
+              <option style="background:#16130E">$500K – $1M</option>
+              <option style="background:#16130E">$1M – $3M</option>
+              <option style="background:#16130E">$3M – $10M</option>
+              <option style="background:#16130E">$10M – $20M</option>
+              <option style="background:#16130E">$20M+</option>
+            </select></div>
+            <div style="grid-column:1 / -1;display:flex;flex-direction:column;gap:0.4rem"><label style="font-family:var(--font-sans);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4)">Industry</label><select name="industry" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);font-family:var(--font-sans);font-size:0.85rem;font-weight:300;padding:0.75rem 1rem;outline:none;width:100%;box-sizing:border-box">
+              <option value="" style="background:#16130E">Your industry</option>
+              <option style="background:#16130E">Restaurant / Food Service</option>
+              <option style="background:#16130E">Medical Spa / Clinic</option>
+              <option style="background:#16130E">IT / Professional Services</option>
+              <option style="background:#16130E">E-Commerce / Amazon</option>
+              <option style="background:#16130E">Roofing / Construction</option>
+              <option style="background:#16130E">Retail / Manufacturing</option>
+              <option style="background:#16130E">Other</option>
+            </select></div>
+            <div style="grid-column:1 / -1;display:flex;flex-direction:column;gap:0.4rem"><label style="font-family:var(--font-sans);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4)">What's going on with your numbers?<span style="color:var(--orange-500)"> *</span></label><textarea name="message" placeholder="Tell us what you're dealing with — the more specific, the better." style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.9);font-family:var(--font-sans);font-size:0.85rem;font-weight:300;padding:0.75rem 1rem;outline:none;width:100%;box-sizing:border-box;resize:none;min-height:90px"></textarea></div>
+          </div>
+          <button type="submit" style="width:100%;margin-top:0.9rem;background:var(--orange-500);color:#fff;font-family:var(--font-sans);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;padding:1rem 2rem;border:none;cursor:pointer;transition:background 0.2s">Send message&nbsp;→</button>
+          <p style="font-size:0.7rem;font-weight:300;color:rgba(255,255,255,0.2);margin-top:0.7rem;text-align:center;line-height:1.5">We respond within one business day. No spam, no sales sequences.</p>
+          </div>
+          </sc-if>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Site Footer" hint-size="100%,90px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false };
+  formRef = React.createRef();
+  SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQ7CkTdGQy0yxkS92Nj4ywl1UFyN7l8ZGTeFHhiRKdqLTRXrMpjA9QbtvyzVFCfRP_/exec';
+
+  componentDidMount() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+    this._io = io;
+  }
+
+  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const f = e.target;
+    if (f.website && f.website.value) return; // honeypot
+    const get = (n) => (f.elements[n] && f.elements[n].value) || '';
+    const data = new URLSearchParams({
+      source: 'faq-contact',
+      name: get('name'), email: get('email'), business: get('business'),
+      revenue: get('revenue'), industry: get('industry'), message: get('message'),
+    });
+    fetch(this.SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: data }).catch(() => {});
+    this.setState({ sent: true });
+  };
+
+  renderVals() {
+    return {
+      formRef: this.formRef,
+      onSubmit: this.onSubmit,
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+    };
+  }
+}
+</script>
+</body>
+</html>

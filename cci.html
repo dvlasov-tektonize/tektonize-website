@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,300&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:#F6F4EF;color:#57534B;font-family:'Space Grotesk',-apple-system,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+  ::selection{background:#DB5526;color:#fff}
+  input.cci-slider{-webkit-appearance:none;appearance:none;width:100%;height:4px;outline:none;cursor:pointer}
+  input.cci-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;border-radius:50%;background:#DB5526;cursor:pointer;border:2px solid #F6F4EF;box-shadow:0 0 0 1px #DB5526}
+  input.cci-slider::-moz-range-thumb{width:16px;height:16px;border:2px solid #F6F4EF;border-radius:50%;background:#DB5526;cursor:pointer;box-shadow:0 0 0 1px #DB5526}
+  .cci-input:focus,.cci-select:focus{border-color:#DB5526}
+  .cci-input::placeholder{color:#8C887F}
+</style>
+</helmet>
+
+<div style="min-height:100vh">
+
+  <div style="position:fixed;top:0;left:0;right:0;height:4px;background:#DB5526;z-index:200"></div>
+
+  <dc-import name="Site Header" hint-size="100%,64px"></dc-import>
+
+  <div style="background:#F6F4EF;background-image:radial-gradient(circle, #E1DCD0 1.3px, transparent 1.3px);background-size:26px 26px;padding:128px 1.6rem 2.4rem">
+    <div style="max-width:720px;margin:0 auto">
+      <!-- HEADER -->
+      <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem">
+        <span style="width:24px;height:1px;background:#DB5526"></span>
+        <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8C887F;font-weight:500">FCore OS · Diagnostic</span>
+      </div>
+      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(2.6rem,6vw,3.8rem);font-weight:400;color:#15120D;margin:0 0 1rem;letter-spacing:-.01em;line-height:1.02">Clarity &amp; Control <span style="font-style:italic;color:#DB5526">Index</span></h1>
+      <p style="font-size:1rem;font-weight:300;color:#57534B;line-height:1.85;margin:0;max-width:560px">Seven honest questions about your business finances. Answer truthfully — and discover exactly where you stand. Takes two minutes.</p>
+    </div>
+  </div>
+
+  <div style="max-width:720px;margin:0 auto;padding:2.4rem 1.6rem 6rem">
+    <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+    <div>
+
+      <!-- ABOUT YOUR BUSINESS -->
+      <div data-cci-about style="background:#fff;border:1px solid #E3DFD6;padding:1.8rem 2rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8C887F;margin-bottom:1.4rem;font-weight:600">About your business</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div style="display:flex;flex-direction:column;gap:.45rem">
+            <label style="font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8C887F;font-weight:500">Your name</label>
+            <input class="cci-input" type="text" placeholder="John Smith" value="{{ name }}" onChange="{{ onName }}" style="background:#fff;border:1px solid #E3DFD6;color:#15120D;font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:300;padding:.75rem .9rem;outline:none;width:100%;transition:border-color .2s">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:.45rem">
+            <label style="font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8C887F;font-weight:500">Email <span style="color:#DB5526">*</span></label>
+            <input class="cci-input" type="email" placeholder="john@company.com" value="{{ email }}" onChange="{{ onEmail }}" style="background:#fff;color:#15120D;font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:300;padding:.75rem .9rem;outline:none;width:100%;transition:border-color .2s;border:{{ emailBorder }}">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:.45rem">
+            <label style="font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8C887F;font-weight:500">Annual revenue</label>
+            <select class="cci-select" value="{{ revenue }}" onChange="{{ onRevenue }}" style="background:#fff;border:1px solid #E3DFD6;color:#15120D;font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:300;padding:.75rem .9rem;outline:none;width:100%;transition:border-color .2s">
+              <option value="">Select range...</option>
+              <option>$500K – $1M</option>
+              <option>$1M – $3M</option>
+              <option>$3M – $10M</option>
+              <option>$10M – $20M</option>
+              <option>$20M+</option>
+            </select>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:.45rem">
+            <label style="font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8C887F;font-weight:500">Industry</label>
+            <select class="cci-select" value="{{ industry }}" onChange="{{ onIndustry }}" style="background:#fff;border:1px solid #E3DFD6;color:#15120D;font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:300;padding:.75rem .9rem;outline:none;width:100%;transition:border-color .2s">
+              <option value="">Select industry...</option>
+              <option>Restaurant / Food Service</option>
+              <option>Medical Spa / Clinic</option>
+              <option>IT / Professional Services</option>
+              <option>E-Commerce / Amazon</option>
+              <option>Roofing / Construction</option>
+              <option>Retail / Manufacturing</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUESTIONS -->
+      <sc-for list="{{ questions }}" as="q" hint-placeholder-count="7">
+        <div data-cci-card="{{ q.idx }}" style="{{ q.cardStyle }}">
+          <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:1rem">
+            <span style="width:20px;height:1px;background:#DB5526"></span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8C887F;font-weight:500">{{ q.label }}</span>
+          </div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:1.5rem;font-weight:400;color:#15120D;line-height:1.25;margin-bottom:1.6rem">{{ q.pre }}<em style="font-style:italic;color:#DB5526">{{ q.em }}</em>{{ q.post }}</div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:.6rem">
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#8C887F;font-weight:400">Absolutely no</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#8C887F;font-weight:400">Absolutely yes</span>
+          </div>
+          <input type="range" class="cci-slider" min="0" max="10" step="1" value="{{ q.value }}" onChange="{{ q.onInput }}" onInput="{{ q.onInput }}" style="background: {{ q.fillStyle }}">
+          <div style="display:flex;justify-content:space-between;margin-top:.5rem">
+            <sc-for list="{{ q.ticks }}" as="t" hint-placeholder-count="11">
+              <span style="{{ t.style }}">{{ t.n }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+
+      <sc-if value="{{ validationMsg }}" hint-placeholder-val="">
+        <div style="background:#FBF1EF;border:1px solid #E8C3BA;padding:.9rem 1.2rem;margin-bottom:1rem;font-family:'Space Grotesk',sans-serif;font-size:.85rem;color:#BE3030;font-weight:400">{{ validationMsg }}</div>
+      </sc-if>
+
+      <!-- SUBMIT -->
+      <div style="background:#fff;border:1px solid #E3DFD6;padding:1.5rem 2rem;margin-top:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+        <button onClick="{{ calculate }}" style="width:100%;background:#DB5526;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;padding:1.1rem 2rem;border:none;cursor:pointer;letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.6rem;box-shadow:0 6px 20px -10px rgba(219,85,38,.6);transition:background .2s" style-hover="background:#C2461C;width:100%;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;padding:1.1rem 2rem;border:none;cursor:pointer;letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.6rem;box-shadow:0 6px 20px -10px rgba(219,85,38,.6)">Calculate Clarity &amp; Control Index <span style="font-size:1.1rem">→</span></button>
+      </div>
+
+    </div>
+    </sc-if>
+
+    <!-- RESULTS -->
+    <sc-if value="{{ showResults }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="background:#fff;border:1px solid #E3DFD6;padding:2.5rem 2rem;margin-bottom:1rem;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+        <div style="position:absolute;right:-30px;top:50%;transform:translateY(-50%);width:200px;height:200px;border-radius:50%;border:1px solid rgba(219,85,38,.12);pointer-events:none"></div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8C887F;margin-bottom:1.2rem;font-weight:500">Your Clarity &amp; Control Index</div>
+        <sc-if value="{{ r.hasClient }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-bottom:1.4rem;padding-bottom:1.4rem;border-bottom:1px solid #E3DFD6">
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:1.9rem;font-weight:400;color:#15120D;line-height:1.05;margin-bottom:.4rem">{{ r.clientName }}</div>
+            <div style="display:flex;gap:1.4rem;flex-wrap:wrap">
+              <sc-for list="{{ r.clientMeta }}" as="m" hint-placeholder-count="2">
+                <span style="font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:300;color:#8C887F;letter-spacing:.03em;display:flex;align-items:center;gap:.4rem"><span style="width:4px;height:4px;background:#DB5526;border-radius:50%;display:inline-block"></span>{{ m }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+        <div style="display:flex;align-items:baseline;gap:1.1rem;margin-bottom:1.6rem">
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:5.2rem;font-weight:400;color:{{ r.tierColor }};line-height:.9;letter-spacing:-.02em">{{ r.score }}</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:1.9rem;font-weight:400;font-style:italic;color:#15120D">{{ r.levelName }}</div>
+        </div>
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8C887F;margin-bottom:.6rem;font-weight:500">Score out of 100</div>
+          <div style="height:5px;background:#E3DFD6;overflow:hidden">
+            <div style="height:100%;background:{{ r.tierColor }};transition:width 1s cubic-bezier(.16,1,.3,1);width: {{ r.barWidth }}"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #E3DFD6;padding:2.2rem 2rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+        <div style="font-family:'Instrument Serif',Georgia,serif;font-size:1.7rem;font-weight:400;color:#15120D;margin-bottom:.7rem;line-height:1.2">{{ r.headline }}</div>
+        <div style="font-size:.92rem;font-weight:300;color:#57534B;line-height:1.85;margin-bottom:1.8rem;max-width:560px">{{ r.text }}</div>
+
+        <sc-for list="{{ r.gaps }}" as="g" hint-placeholder-count="3">
+          <div style="margin:0 0 .9rem;padding:1.2rem 1.5rem;border-left:3px solid #DB5526;background:#FBF1EB">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#DB5526;font-weight:600;margin-bottom:.5rem">{{ g.label }}</div>
+            <div style="font-size:.9rem;font-weight:300;color:#57534B;line-height:1.8;margin-bottom:.7rem">{{ g.weak }}</div>
+            <div style="font-size:.88rem;font-weight:400;color:#15120D;line-height:1.8;padding-top:.7rem;border-top:1px solid rgba(219,85,38,.18)">{{ g.action }}</div>
+          </div>
+        </sc-for>
+
+        <div style="display:flex;align-items:center;gap:.7rem;margin:2rem 0 1.2rem">
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8C887F;font-weight:500">Question breakdown</span>
+          <span style="flex:1;height:1px;background:#E3DFD6"></span>
+        </div>
+        <sc-for list="{{ r.breakdown }}" as="b" hint-placeholder-count="7">
+          <div style="display:flex;align-items:center;gap:1rem;padding:.75rem 0;border-bottom:1px solid #EDE9E0">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;color:#DB5526;min-width:84px;letter-spacing:.04em;text-transform:uppercase">{{ b.cat }}</div>
+            <div style="font-size:.85rem;font-weight:300;color:#57534B;flex:1;line-height:1.4">{{ b.q }}</div>
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:1.4rem;font-weight:400;min-width:36px;text-align:right;color:{{ b.color }}">{{ b.value }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- CTA -->
+      <div style="background:#16130E;padding:2.4rem 2rem;position:relative;overflow:hidden">
+        <div style="position:absolute;right:-40px;top:50%;transform:translateY(-50%);width:260px;height:260px;border-radius:50%;border:1px solid rgba(255,255,255,.08);pointer-events:none"></div>
+        <div style="position:absolute;right:30px;top:50%;transform:translateY(-50%);width:140px;height:140px;border-radius:50%;border:1px solid rgba(255,255,255,.1);pointer-events:none"></div>
+        <div style="position:relative;z-index:1;display:grid;grid-template-columns:auto 1px 1fr;gap:2.4rem;align-items:center">
+          <div>
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(3rem,6vw,4.6rem);font-weight:400;font-style:italic;color:#fff;line-height:.92;letter-spacing:-.02em">Thank<br>you.</div>
+            <div style="width:28px;height:2px;background:#DB5526;margin-top:1.1rem"></div>
+          </div>
+          <div style="background:rgba(255,255,255,.12);height:90px"></div>
+          <div>
+            <p style="font-size:.95rem;font-weight:300;color:rgba(255,255,255,.9);line-height:1.85;margin:0 0 .8rem">Your analysis has been sent to your email — with a breakdown of your top gaps and what to do about them.</p>
+            <p style="font-size:.83rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.75;margin:0">To book a conversation, follow the link in the email.</p>
+          </div>
+        </div>
+      </div>
+
+      <button onClick="{{ retake }}" style="display:block;margin:1.2rem auto 0;font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8C887F;cursor:pointer;background:none;border:none;text-decoration:underline;text-underline-offset:3px">↺ Retake the assessment</button>
+    </div>
+    </sc-if>
+
+  </div>
+
+  <dc-import name="Site Footer" hint-size="100%,90px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    name: '', email: '', revenue: '', industry: '',
+    vals: [0,0,0,0,0,0,0],
+    touched: [false,false,false,false,false,false,false],
+    emailError: false,
+    qErrors: [false,false,false,false,false,false,false],
+    validationMsg: '',
+    showResults: false,
+    result: null,
+  };
+
+  SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQ7CkTdGQy0yxkS92Nj4ywl1UFyN7l8ZGTeFHhiRKdqLTRXrMpjA9QbtvyzVFCfRP_/exec';
+  weights = [20, 20, 15, 15, 15, 10, 5];
+  categories = ['Profitability','Cash','Alignment','Visibility','Discipline','Priorities','Readiness'];
+
+  questionParts = [
+    { label:'Profitability', pre:'Do you know exactly how much money your business is ', em:'making?', post:'' },
+    { label:'Cash', pre:'Do you know ', em:'where', post:' your business money actually is right now?' },
+    { label:'Alignment', pre:'Do the numbers across your systems actually ', em:'match?', post:'' },
+    { label:'Visibility', pre:'Do your reports contain the information you ', em:'need', post:' to make decisions?' },
+    { label:'Discipline', pre:'Do you ', em:'regularly', post:' review your financial numbers?' },
+    { label:'Priorities', pre:'After reviewing your numbers, do you know what to focus on ', em:'first?', post:'' },
+    { label:'Readiness', pre:'If the IRS, a bank, or a buyer asked for your financials today — would you be ', em:'ready?', post:'' },
+  ];
+
+  questionsShort = [
+    'Do you know exactly how much money your business is making?',
+    'Do you know where your business money actually is right now?',
+    'Do the numbers across your systems actually match?',
+    'Do your reports contain the information you need to make decisions?',
+    'Do you regularly review your financial numbers?',
+    'After reviewing your numbers, do you know what to focus on first?',
+    'If the IRS, a bank, or a buyer asked for your financials today — would you be ready?',
+  ];
+
+  levels = [
+    { min:0,  max:30,  name:'Blind',        color:'#BE3030', headline:'Your business is running on gut feeling.', text:"Most financial decisions are based on instinct rather than data. Your books may exist, but they're not giving you the clarity you need to run — let alone grow — confidently. The risk of cash flow surprises, missed opportunities, and being unprepared for lenders or buyers is high. This is fixable, and the path forward is clear." },
+    { min:31, max:55,  name:'Partial',      color:'#C07810', headline:'You have the tools — but not the system.', text:"You're using QuickBooks and other platforms, but they're not connected in a way that gives you a complete picture. You get reports, but they raise more questions than they answer. A structured system would give you the clarity you're missing." },
+    { min:56, max:75,  name:'Clear',        color:'#B04820', headline:'You have basic control — but the full picture is still missing.', text:"You're reviewing numbers regularly and have some financial infrastructure in place. But there are still gaps: systems that don't fully connect, reports that don't show contribution margin by channel, or months where cash flow surprises you. You're close — the remaining gaps are structural and fixable." },
+    { min:76, max:100, name:'Full Control', color:'#347010', headline:'You have Clarity and Control.', text:"Your financial infrastructure is working. You know your numbers, understand what they mean, and can act on them. Your systems connect, your reports tell the management story, and you're ready for whatever comes next." },
+  ];
+
+  areaInsights = {
+    Profitability: { weak:"You're making decisions without knowing what your business actually earned. The P&L exists — but it's not producing a clean profit number you can trust.", action:"What needs to happen: rebuild your Chart of Accounts to separate revenue streams and cost layers so your P&L shows contribution margin by channel — not just a tax-ready total. Once that's in place, profitability becomes readable every month without any extra calculation." },
+    Cash: { weak:"You know revenue is coming in, but you're not clear on where it ends up. Revenue and cash are not the same thing — and this gap is what causes businesses to grow fast and run dry at the same time.", action:"What needs to happen: connect your bank feeds, AR, and payroll into a closed loop that reconciles automatically every month. You need a cash flow statement that tells you not just what you have, but why — and what's coming." },
+    Alignment: { weak:"Your tools are giving you conflicting information. When Stripe, QuickBooks, and your CRM don't agree, every report is a guess. You can't manage a business on numbers you don't trust.", action:"What needs to happen: define one source of truth for each data domain — revenue, payroll, cash, receivables — and build integrations that verify against the bank every month. No manual transfers, no reconciliation guesswork." },
+    Visibility: { weak:"Your reports tell you what happened for the tax return, not what it means for running the business. The information exists — it's just not structured to surface the decisions you actually need to make.", action:"What needs to happen: redesign your reporting architecture around how your business actually operates. Gross margin by service line, cost per acquisition, labor as a percentage of revenue — the metrics that drive decisions, not just compliance." },
+    Discipline: { weak:"Without a consistent monthly review, you're managing by memory and feel. Problems compound quietly for months before becoming visible. By the time you notice, the correction is expensive.", action:"What needs to happen: establish a monthly close cycle with a fixed date, a defined checklist, and a structured review. The review shouldn't take more than two hours — if it does, the system isn't working." },
+    Priorities: { weak:"You can see the numbers but you don't know what to do with them. The reports aren't structured to surface clear actions — so every month ends with data but no direction.", action:"What needs to happen: your management report needs to include a variance layer — what changed, by how much, and what it means. When reports are built correctly, the priorities are obvious without needing an analyst in the room." },
+    Readiness: { weak:"If a bank, buyer, or the IRS asked for your financials today, you'd have a problem. And readiness isn't just about audits — it's about being able to move fast when opportunity shows up.", action:"What needs to happen: move to accrual-basis accounting, ensure your books are clean 12 months back, and maintain a financial package that can be shared within 24 hours. This is what separates businesses that can raise capital from those that can't." },
+  };
+
+  onName = (e) => this.setState({ name: e.target.value });
+  onEmail = (e) => this.setState({ email: e.target.value, emailError: false });
+  onRevenue = (e) => this.setState({ revenue: e.target.value });
+  onIndustry = (e) => this.setState({ industry: e.target.value });
+
+  setSlider(i, v) {
+    this.setState(s => {
+      const vals = s.vals.slice(); vals[i] = v;
+      const touched = s.touched.slice(); touched[i] = true;
+      const qErrors = s.qErrors.slice(); qErrors[i] = false;
+      return { vals, touched, qErrors };
+    });
+  }
+
+  scrollToEl(sel) {
+    requestAnimationFrame(() => {
+      const el = document.querySelector(sel);
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 110, behavior: 'smooth' });
+    });
+  }
+
+  calculate = () => {
+    const s = this.state;
+    const errors = [];
+    let emailError = false;
+    let firstSel = null;
+    const email = s.email.trim();
+    if (!email) { emailError = true; errors.push('email address'); firstSel = '[data-cci-about]'; }
+
+    const qErrors = s.qErrors.slice();
+    let untouched = 0;
+    for (let i = 0; i < 7; i++) {
+      if (!s.touched[i]) {
+        untouched++; qErrors[i] = true;
+        if (!firstSel) firstSel = '[data-cci-card="' + i + '"]';
+      } else { qErrors[i] = false; }
+    }
+    if (untouched > 0) errors.push(untouched + ' unanswered question' + (untouched > 1 ? 's' : ''));
+
+    if (errors.length > 0) {
+      this.setState({ emailError, qErrors, validationMsg: 'Please complete the following before continuing: ' + errors.join(' and ') + '.' });
+      if (firstSel) this.scrollToEl(firstSel);
+      return;
+    }
+
+    let total = 0;
+    const vals = s.vals.slice();
+    for (let i = 0; i < 7; i++) total += (vals[i] / 10) * this.weights[i];
+    const score = Math.round(total);
+    const level = this.levels.find(l => score >= l.min && score <= l.max);
+
+    const formData = new URLSearchParams({
+      source: 'cci', name: s.name, email, industry: s.industry, revenue: s.revenue,
+      score: score, level: level.name,
+      q1: vals[0], q2: vals[1], q3: vals[2], q4: vals[3], q5: vals[4], q6: vals[5], q7: vals[6],
+    });
+    fetch(this.SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: formData }).catch(() => {});
+
+    const normalised = vals.map((v, i) => ({ cat: this.categories[i], norm: v / 10 }));
+    const bottom3 = [...normalised].sort((a, b) => a.norm - b.norm).slice(0, 3);
+    const gapTitles = ['Biggest gap', 'Second priority', 'Third priority'];
+    const gaps = bottom3.map((a, idx) => ({
+      label: gapTitles[idx] + ' — ' + a.cat,
+      weak: this.areaInsights[a.cat].weak,
+      action: this.areaInsights[a.cat].action,
+    }));
+
+    const breakdown = vals.map((v, i) => ({
+      cat: this.categories[i],
+      q: this.questionsShort[i],
+      value: v,
+      color: v >= 8 ? '#347010' : v >= 4 ? '#DB5526' : '#BE3030',
+    }));
+
+    const clientMeta = [s.industry, s.revenue].filter(Boolean);
+
+    this.setState({
+      validationMsg: '', emailError: false, qErrors: [false,false,false,false,false,false,false],
+      showResults: true,
+      result: {
+        score, levelName: level.name, tierColor: level.color, headline: level.headline, text: level.text,
+        barWidth: score + '%', hasClient: !!(s.name.trim() || clientMeta.length),
+        clientName: s.name.trim(), clientMeta, gaps, breakdown,
+      },
+    });
+    requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'auto' }));
+  };
+
+  retake = () => {
+    this.setState({
+      vals: [0,0,0,0,0,0,0], touched: [false,false,false,false,false,false,false],
+      qErrors: [false,false,false,false,false,false,false], emailError: false,
+      validationMsg: '', showResults: false, result: null,
+    });
+    requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'auto' }));
+  };
+
+  renderVals() {
+    const s = this.state;
+    const questions = this.questionParts.map((q, i) => {
+      const v = s.vals[i];
+      const pct = (v / 10) * 100;
+      const err = s.qErrors[i];
+      const ticks = [];
+      for (let n = 0; n <= 10; n++) {
+        const active = n === v;
+        ticks.push({
+          n,
+          style: {
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: active ? '1rem' : '11px',
+            fontWeight: active ? 600 : 300,
+            color: active ? '#DB5526' : '#A8A49B',
+            minWidth: '14px',
+            textAlign: 'center',
+            transition: 'all .15s',
+            lineHeight: 1,
+          },
+        });
+      }
+      return {
+        idx: i,
+        num: ('0' + (i + 1)).slice(-2),
+        label: q.label, pre: q.pre, em: q.em, post: q.post,
+        value: v,
+        fillStyle: 'linear-gradient(to right, #DB5526 ' + pct + '%, #E3DFD6 ' + pct + '%)',
+        ticks,
+        onInput: (e) => this.setSlider(i, parseInt(e.target.value)),
+        cardStyle: 'background:' + (err ? '#FDF6F4' : '#fff') + ';border:1px solid ' + (err ? '#BE3030' : '#E3DFD6') + ';padding:1.8rem 2rem;margin-bottom:1rem;box-shadow:0 1px 3px rgba(0,0,0,.04)',
+      };
+    });
+
+    return {
+      name: s.name, email: s.email, revenue: s.revenue, industry: s.industry,
+      onName: this.onName, onEmail: this.onEmail, onRevenue: this.onRevenue, onIndustry: this.onIndustry,
+      emailBorder: '1px solid ' + (s.emailError ? '#BE3030' : '#E3DFD6'),
+      questions,
+      validationMsg: s.validationMsg,
+      calculate: this.calculate,
+      retake: this.retake,
+      showForm: !s.showResults,
+      showResults: s.showResults,
+      r: s.result || {},
+    };
+  }
+}
+</script>
+</body>
+</html>
