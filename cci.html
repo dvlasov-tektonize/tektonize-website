@@ -7,21 +7,21 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>Clarity & Control Index — Tektonize Financial Diagnostic</title>
+<title>Financial Clarity and Control Index — Tektonize Financial Diagnostic</title>
 <meta name="description" content="Seven questions, two minutes. Score your business 0–100 on how well it turns financial data into decisions — and see exactly what's missing, with personalized next steps.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#DB5526">
 <link rel="canonical" href="https://tektonize.com/cci.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tektonize">
-<meta property="og:title" content="Clarity & Control Index — Financial Diagnostic">
+<meta property="og:title" content="Financial Clarity and Control Index — Financial Diagnostic">
 <meta property="og:description" content="Seven honest questions about your business finances. Get an instant 0–100 score and a personalized breakdown of where you stand.">
 <meta property="og:url" content="https://tektonize.com/cci.html">
 <meta property="og:image" content="https://tektonize.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Clarity & Control Index — Financial Diagnostic">
+<meta name="twitter:title" content="Financial Clarity and Control Index — Financial Diagnostic">
 <meta name="twitter:description" content="2 minutes · 7 questions · instant personalized result. See how in control of your finances you really are.">
 <meta name="twitter:image" content="https://tektonize.com/og-image.png">
 </head>
@@ -54,7 +54,7 @@
         <span style="width:24px;height:1px;background:#DB5526"></span>
         <span style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8C887F;font-weight:500">FCore OS · Diagnostic</span>
       </div>
-      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(2.6rem,6vw,3.8rem);font-weight:400;color:#15120D;margin:0 0 1rem;letter-spacing:-.01em;line-height:1.02">Clarity &amp; Control <span style="font-style:italic;color:#DB5526">Index</span></h1>
+      <h1 style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(2.6rem,6vw,3.8rem);font-weight:400;color:#15120D;margin:0 0 1rem;letter-spacing:-.01em;line-height:1.02">Financial Clarity and Control <span style="font-style:italic;color:#DB5526">Index</span></h1>
       <p style="font-size:1rem;font-weight:300;color:#57534B;line-height:1.85;margin:0;max-width:560px">Seven honest questions about your business finances. Answer truthfully — and discover exactly where you stand. Takes two minutes.</p>
     </div>
   </div>
@@ -79,12 +79,14 @@
             <label style="font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8C887F;font-weight:500">Annual revenue</label>
             <select class="cci-select" value="{{ revenue }}" onChange="{{ onRevenue }}" style="background:#fff;border:1px solid #E3DFD6;color:#15120D;font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:300;padding:.75rem .9rem;outline:none;width:100%;transition:border-color .2s">
               <option value="">Select range...</option>
-              <option>$500K – $1M</option>
+              <option>Under $1M</option>
               <option>$1M – $3M</option>
               <option>$3M – $10M</option>
-              <option>$10M – $20M</option>
-              <option>$20M+</option>
+              <option>Over $10M</option>
             </select>
+            <sc-if value="{{ revenueNote }}" hint-placeholder-val="">
+              <div style="font-size:.72rem;font-weight:300;color:#8C887F;line-height:1.55;padding-top:.1rem">{{ revenueNote }}</div>
+            </sc-if>
           </div>
           <div style="display:flex;flex-direction:column;gap:.45rem">
             <label style="font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8C887F;font-weight:500">Industry</label>
@@ -129,7 +131,7 @@
 
       <!-- SUBMIT -->
       <div style="background:#fff;border:1px solid #E3DFD6;padding:1.5rem 2rem;margin-top:1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.04)">
-        <button onClick="{{ calculate }}" style="width:100%;background:#DB5526;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;padding:1.1rem 2rem;border:none;cursor:pointer;letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.6rem;box-shadow:0 6px 20px -10px rgba(219,85,38,.6);transition:background .2s" style-hover="background:#C2461C;width:100%;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;padding:1.1rem 2rem;border:none;cursor:pointer;letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.6rem;box-shadow:0 6px 20px -10px rgba(219,85,38,.6)">Calculate Clarity &amp; Control Index <span style="font-size:1.1rem">→</span></button>
+        <button onClick="{{ calculate }}" style="width:100%;background:#DB5526;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;padding:1.1rem 2rem;border:none;cursor:pointer;letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.6rem;box-shadow:0 6px 20px -10px rgba(219,85,38,.6);transition:background .2s" style-hover="background:#C2461C;width:100%;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;padding:1.1rem 2rem;border:none;cursor:pointer;letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.6rem;box-shadow:0 6px 20px -10px rgba(219,85,38,.6)">Calculate Financial Clarity and Control Index <span style="font-size:1.1rem">→</span></button>
       </div>
 
     </div>
@@ -140,7 +142,7 @@
     <div>
       <div style="background:#fff;border:1px solid #E3DFD6;padding:2.5rem 2rem;margin-bottom:1rem;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)">
         <div style="position:absolute;right:-30px;top:50%;transform:translateY(-50%);width:200px;height:200px;border-radius:50%;border:1px solid rgba(219,85,38,.12);pointer-events:none"></div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8C887F;margin-bottom:1.2rem;font-weight:500">Your Clarity &amp; Control Index</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8C887F;margin-bottom:1.2rem;font-weight:500">Your Financial Clarity and Control Index</div>
         <sc-if value="{{ r.hasClient }}" hint-placeholder-val="{{ false }}">
           <div style="margin-bottom:1.4rem;padding-bottom:1.4rem;border-bottom:1px solid #E3DFD6">
             <div style="font-family:'Instrument Serif',Georgia,serif;font-size:1.9rem;font-weight:400;color:#15120D;line-height:1.05;margin-bottom:.4rem">{{ r.clientName }}</div>
@@ -172,6 +174,7 @@
             <div style="font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#DB5526;font-weight:600;margin-bottom:.5rem">{{ g.label }}</div>
             <div style="font-size:.9rem;font-weight:300;color:#57534B;line-height:1.8;margin-bottom:.7rem">{{ g.weak }}</div>
             <div style="font-size:.88rem;font-weight:400;color:#15120D;line-height:1.8;padding-top:.7rem;border-top:1px solid rgba(219,85,38,.18)">{{ g.action }}</div>
+            <div style="font-size:.85em;font-weight:400;color:#D45500;line-height:1.65;margin-top:.6rem">{{ g.fcore }}</div>
           </div>
         </sc-for>
 
@@ -201,6 +204,9 @@
           <div>
             <p style="font-size:.95rem;font-weight:300;color:rgba(255,255,255,.9);line-height:1.85;margin:0 0 .8rem">Your analysis has been sent to your email — with a breakdown of your top gaps and what to do about them.</p>
             <p style="font-size:.83rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.75;margin:0">To book a conversation, follow the link in the email.</p>
+            <sc-if value="{{ r.segmentNote }}" hint-placeholder-val="">
+              <p style="font-size:.83rem;font-weight:300;color:rgba(255,255,255,.6);line-height:1.75;margin:1rem 0 0;padding-top:1rem;border-top:1px solid rgba(255,255,255,.12)">{{ r.segmentNote }}</p>
+            </sc-if>
           </div>
         </div>
       </div>
@@ -227,7 +233,7 @@ class Component extends DCLogic {
     result: null,
   };
 
-  SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQ7CkTdGQy0yxkS92Nj4ywl1UFyN7l8ZGTeFHhiRKdqLTRXrMpjA9QbtvyzVFCfRP_/exec';
+  SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxHziXatLRKLDeWhGmi9l3ad5eDA8mMCqisrDPbNarN8td5QpN2hqt2cyTo3l0PcY5b/exec';
   weights = [20, 20, 15, 15, 15, 10, 5];
   categories = ['Profitability','Cash','Alignment','Visibility','Discipline','Priorities','Readiness'];
 
@@ -259,18 +265,32 @@ class Component extends DCLogic {
   ];
 
   areaInsights = {
-    Profitability: { weak:"You're making decisions without knowing what your business actually earned. The P&L exists — but it's not producing a clean profit number you can trust.", action:"What needs to happen: rebuild your Chart of Accounts to separate revenue streams and cost layers so your P&L shows contribution margin by channel — not just a tax-ready total. Once that's in place, profitability becomes readable every month without any extra calculation." },
-    Cash: { weak:"You know revenue is coming in, but you're not clear on where it ends up. Revenue and cash are not the same thing — and this gap is what causes businesses to grow fast and run dry at the same time.", action:"What needs to happen: connect your bank feeds, AR, and payroll into a closed loop that reconciles automatically every month. You need a cash flow statement that tells you not just what you have, but why — and what's coming." },
-    Alignment: { weak:"Your tools are giving you conflicting information. When Stripe, QuickBooks, and your CRM don't agree, every report is a guess. You can't manage a business on numbers you don't trust.", action:"What needs to happen: define one source of truth for each data domain — revenue, payroll, cash, receivables — and build integrations that verify against the bank every month. No manual transfers, no reconciliation guesswork." },
-    Visibility: { weak:"Your reports tell you what happened for the tax return, not what it means for running the business. The information exists — it's just not structured to surface the decisions you actually need to make.", action:"What needs to happen: redesign your reporting architecture around how your business actually operates. Gross margin by service line, cost per acquisition, labor as a percentage of revenue — the metrics that drive decisions, not just compliance." },
-    Discipline: { weak:"Without a consistent monthly review, you're managing by memory and feel. Problems compound quietly for months before becoming visible. By the time you notice, the correction is expensive.", action:"What needs to happen: establish a monthly close cycle with a fixed date, a defined checklist, and a structured review. The review shouldn't take more than two hours — if it does, the system isn't working." },
-    Priorities: { weak:"You can see the numbers but you don't know what to do with them. The reports aren't structured to surface clear actions — so every month ends with data but no direction.", action:"What needs to happen: your management report needs to include a variance layer — what changed, by how much, and what it means. When reports are built correctly, the priorities are obvious without needing an analyst in the room." },
-    Readiness: { weak:"If a bank, buyer, or the IRS asked for your financials today, you'd have a problem. And readiness isn't just about audits — it's about being able to move fast when opportunity shows up.", action:"What needs to happen: move to accrual-basis accounting, ensure your books are clean 12 months back, and maintain a financial package that can be shared within 24 hours. This is what separates businesses that can raise capital from those that can't." },
+    Profitability: { weak:"You're making decisions without knowing what your business actually earned. The P&L exists — but it's not producing a clean profit number you can trust.", action:"What needs to happen: rebuild your Chart of Accounts to separate revenue streams and cost layers so your P&L shows contribution margin by channel — not just a tax-ready total. Once that's in place, profitability becomes readable every month without any extra calculation.", fcore:"FCore OS: Cash-Traceable Revenue and Mirror COGS Structure — Phase 4, Accounting Foundation" },
+    Cash: { weak:"You know revenue is coming in, but you're not clear on where it ends up. Revenue and cash are not the same thing — and this gap is what causes businesses to grow fast and run dry at the same time.", action:"What needs to happen: connect your bank feeds, AR, and payroll into a closed loop that reconciles automatically every month. You need a cash flow statement that tells you not just what you have, but why — and what's coming.", fcore:"FCore OS: Bank as Verification Anchor — Phase 5, Systems Integration and Information Loop Closure" },
+    Alignment: { weak:"Your tools are giving you conflicting information. When Stripe, QuickBooks, and your CRM don't agree, every report is a guess. You can't manage a business on numbers you don't trust.", action:"What needs to happen: define one source of truth for each data domain — revenue, payroll, cash, receivables — and build integrations that verify against the bank every month. No manual transfers, no reconciliation guesswork.", fcore:"FCore OS: Phase 5, Systems Integration and Information Loop Closure — two-level verification architecture" },
+    Visibility: { weak:"Your reports tell you what happened for the tax return, not what it means for running the business. The information exists — it's just not structured to surface the decisions you actually need to make.", action:"What needs to happen: redesign your reporting architecture around how your business actually operates. Gross margin by service line, cost per acquisition, labor as a percentage of revenue — the metrics that drive decisions, not just compliance.", fcore:"FCore OS: Controllability-Ordered Overhead — Phase 4, Accounting Foundation" },
+    Discipline: { weak:"Without a consistent monthly review, you're managing by memory and feel. Problems compound quietly for months before becoming visible. By the time you notice, the correction is expensive.", action:"What needs to happen: establish a monthly close cycle with a fixed date, a defined checklist, and a structured review. The review shouldn't take more than two hours — if it does, the system isn't working.", fcore:"FCore OS: Operational Rhythm — Phase 6" },
+    Priorities: { weak:"You can see the numbers but you don't know what to do with them. The reports aren't structured to surface clear actions — so every month ends with data but no direction.", action:"What needs to happen: your management report needs to include a variance layer — what changed, by how much, and what it means. When reports are built correctly, the priorities are obvious without needing an analyst in the room.", fcore:"FCore OS: Phase 2, Mathematical Business Model — unit economics and target-state definition" },
+    Readiness: { weak:"If a bank, buyer, or the IRS asked for your financials today, you'd have a problem. And readiness isn't just about audits — it's about being able to move fast when opportunity shows up.", action:"What needs to happen: move to accrual-basis accounting, ensure your books are clean 12 months back, and maintain a financial package that can be shared within 24 hours. This is what separates businesses that can raise capital from those that can't.", fcore:"FCore OS: Bank as Verification Anchor and accrual conversion — Phases 4–5" },
   };
 
   onName = (e) => this.setState({ name: e.target.value });
   onEmail = (e) => this.setState({ email: e.target.value, emailError: false });
   onRevenue = (e) => this.setState({ revenue: e.target.value });
+
+  inTargetRange = (r) => r === '$1M – $3M' || r === '$3M – $10M';
+
+  revenueNote(r) {
+    if (r === 'Under $1M') return 'FCore OS is built for businesses doing $1M–$10M. You can still take the diagnostic — your score and gaps are just as valid, and we\u2019ll point you to the right starting point for your stage.';
+    if (r === 'Over $10M') return 'Above $10M, implementation is scoped differently — often alongside an in-house finance lead or fractional CFO. Take the diagnostic; we\u2019ll follow up with what fits at your scale.';
+    return '';
+  }
+
+  revenueNoteResult(r) {
+    if (r === 'Under $1M') return 'FCore OS is built for businesses doing $1M–$10M. Your score and gaps above are just as valid — we\u2019ll point you to the right starting point for your stage.';
+    if (r === 'Over $10M') return 'Above $10M, implementation is scoped differently — often alongside an in-house finance lead or fractional CFO. We\u2019ll follow up with what fits at your scale.';
+    return '';
+  }
   onIndustry = (e) => this.setState({ industry: e.target.value });
 
   setSlider(i, v) {
@@ -321,11 +341,10 @@ class Component extends DCLogic {
 
     const formData = new URLSearchParams({
       source: 'cci', name: s.name, email, industry: s.industry, revenue: s.revenue,
+      segment: s.revenue ? (this.inTargetRange(s.revenue) ? 'target' : 'out-of-range') : '',
       score: score, level: level.name,
       q1: vals[0], q2: vals[1], q3: vals[2], q4: vals[3], q5: vals[4], q6: vals[5], q7: vals[6],
     });
-    fetch(this.SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: formData }).catch(() => {});
-
     const normalised = vals.map((v, i) => ({ cat: this.categories[i], norm: v / 10 }));
     const bottom3 = [...normalised].sort((a, b) => a.norm - b.norm).slice(0, 3);
     const gapTitles = ['Biggest gap', 'Second priority', 'Third priority'];
@@ -333,7 +352,14 @@ class Component extends DCLogic {
       label: gapTitles[idx] + ' — ' + a.cat,
       weak: this.areaInsights[a.cat].weak,
       action: this.areaInsights[a.cat].action,
+      fcore: this.areaInsights[a.cat].fcore,
     }));
+
+    bottom3.forEach((a, i) => {
+      formData.append('gap' + (i + 1) + '_category', a.cat);
+      formData.append('gap' + (i + 1) + '_fcore', this.areaInsights[a.cat].fcore);
+    });
+    fetch(this.SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: formData }).catch(() => {});
 
     const breakdown = vals.map((v, i) => ({
       cat: this.categories[i],
@@ -351,6 +377,7 @@ class Component extends DCLogic {
         score, levelName: level.name, tierColor: level.color, headline: level.headline, text: level.text,
         barWidth: score + '%', hasClient: !!(s.name.trim() || clientMeta.length),
         clientName: s.name.trim(), clientMeta, gaps, breakdown,
+        segmentNote: (s.revenue && !this.inTargetRange(s.revenue)) ? this.revenueNoteResult(s.revenue) : '',
       },
     });
     requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'auto' }));
@@ -402,6 +429,7 @@ class Component extends DCLogic {
 
     return {
       name: s.name, email: s.email, revenue: s.revenue, industry: s.industry,
+      revenueNote: this.revenueNote(s.revenue),
       onName: this.onName, onEmail: this.onEmail, onRevenue: this.onRevenue, onIndustry: this.onIndustry,
       emailBorder: '1px solid ' + (s.emailError ? '#BE3030' : '#E3DFD6'),
       questions,
